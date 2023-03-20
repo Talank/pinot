@@ -32,5 +32,7 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn clean install -DskipTests -pl pinot-core -am
+    - name: run wuthout nondex
+      run: mvn -pl pinot-core test -Dtest=org.apache.pinot.queries.ExplainPlanQueriesTest#testSelectAggregateUsingFilterOnTextIndexColumn
     - name: Run Nondex
       run: mvn -pl pinot-core edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=org.apache.pinot.queries.ExplainPlanQueriesTest#testSelectAggregateUsingFilterOnTextIndexColumn
